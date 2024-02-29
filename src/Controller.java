@@ -1,8 +1,9 @@
 public class Controller { // controller class (UML)
 
-    private MovieCollection movieCollection = new MovieCollection();
+    private MovieCollection movieCollection;
 
     public Controller() {
+        movieCollection = new MovieCollection();
     }
 
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
