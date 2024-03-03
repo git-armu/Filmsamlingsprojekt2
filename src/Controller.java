@@ -17,4 +17,8 @@ public class Controller { // controller class (UML)
     public void searchMovie(String title) {
         movieCollection.searchMovie(title);
     }
+
+    public void editMovie(String title) {
+        movieCollection.editMovie(title);
+    }
 }

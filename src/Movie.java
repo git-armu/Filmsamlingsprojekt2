@@ -27,7 +27,7 @@ public class Movie {
         return yearCreated;
     }
 
-    public boolean getisInColor() {
+    public boolean getIsInColor() {
         return isInColor;
     }
 
@@ -37,5 +37,29 @@ public class Movie {
 
     public String getGenre() {
         return genre;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setYearCreated(int yearCreated) {
+        this.yearCreated = yearCreated;
+    }
+
+    public void setIsInColor(boolean isInColor) {
+        this.isInColor = isInColor;
+    }
+
+    public void setLengthInMinutes(int lengthInMinutes) {
+        this.lengthInMinutes = lengthInMinutes;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 }

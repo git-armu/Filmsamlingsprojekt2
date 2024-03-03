@@ -1,9 +1,7 @@
 import java.util.Scanner;
 
 public class UserInterface {
-
     Controller controller = new Controller();
-
     Scanner scanner = new Scanner(System.in);
 
     public UserInterface() {
@@ -13,11 +11,11 @@ public class UserInterface {
         while (true) {
             System.out.println("#############################################");
             System.out.println("# Welcome to your collection                #");
-            System.out.println("# Press 1 to add a movie.                   #");
-            System.out.println("# Press 2 to cancel.                        #");
-            System.out.println("# Press 3 to view movies.                   #");
-            System.out.println("# Press 4 to search movies.                 #");
-            System.out.println("# Press 5 to edit a movie.                  #");
+            System.out.println("# Enter 1 to add a movie.                   #");
+            System.out.println("# Enter 2 to cancel.                        #");
+            System.out.println("# Enter 3 to view movies.                   #");
+            System.out.println("# Enter 4 to search movies.                 #");
+            System.out.println("# Enter 5 to edit a movie.                  #");
             System.out.println("#############################################");
             int menu = scanner.nextInt();
 
@@ -31,9 +29,7 @@ public class UserInterface {
             } else if (menu == 4) {
                 menu4();
             } else if (menu == 5) {
-                controller.displayMovies();
-                System.out.println("What movie would you like to edit?");
-                String moveToEdit = scanner.nextLine();
+                menu5();
             }
         }
     }
@@ -74,4 +70,36 @@ public class UserInterface {
         String search = scanner.next();
         controller.searchMovie(search);
     }
+
+    public void menu5() {
+        System.out.println("Here's a display of the movies currently in your collection:");
+        controller.displayMovies();
+
+        System.out.println("Which movie would you like to edit?");
+        String title = scanner.nextLine();
+
+        controller.searchMovie(title);
+
+        System.out.println("You have to chosen to edit " + title);
+
+        controller.editMovie(title);
+
+        /*
+        System.out.println("#######################################");
+        System.out.println("# Enter 1 to edit title               #");
+        System.out.println("# Enter 2 to edit director            #");
+        System.out.println("# Enter 4 to edit if it is in color.  #");
+        System.out.println("# Enter 5 to edit length.             #");
+        System.out.println("# Enter 6 to edit genre.              #");
+        System.out.println("#######################################");
+
+        int editChoice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (editChoice == 1) {
+            System.out.println("You have chosen to edit the title of " + );
+         */
+    }
+
+
 }

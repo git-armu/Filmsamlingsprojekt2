@@ -4,7 +4,6 @@ public class Main {
         UserInterface ui = new UserInterface();
 
         ui.startMenu(); // kalder på userinterface . startMenu metode
-
         // main > userinterface > controller > moviecollection & movie
     }
 }
