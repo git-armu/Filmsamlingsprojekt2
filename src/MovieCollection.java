@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class MovieCollection {
     private ArrayList<Movie> moviesArrayList;
+    Scanner scanner = new Scanner(System.in);
 
     public MovieCollection() {
         moviesArrayList = new ArrayList<>();
@@ -28,9 +29,8 @@ public class MovieCollection {
     }
 
     public Movie searchMovie(String title) {
-        boolean movieFound = false;
         for (Movie movie : moviesArrayList) {
-            if (movie.getTitle().toLowerCase().contains(title.toLowerCase())) {
+            if (movie.getTitle().equalsIgnoreCase(title)) {
                 System.out.println("#########################################################");
                 System.out.println("# Your movie has been found.");
                 System.out.println("# Title: " + movie.getTitle());
@@ -40,54 +40,76 @@ public class MovieCollection {
                 System.out.println("# Length in minutes : " + movie.getLengthInMinutes());
                 System.out.println("# Genre: " + movie.getGenre());
                 System.out.println("#########################################################");
-                movieFound = true;
+                return movie;
             }
         }
-            if (!movieFound) {
-                System.out.println("No movies found.");
-            }
-         // TODO - Lær om ToString
+        System.out.println("Movie not found!");
         return null;
     }
 
-    public void editMovie(String title) { // har prøvet at implementere searchMovie her i stedet, men får errors jeg ikke forstår...
-        boolean movieFound = false;
-        for (Movie movie : moviesArrayList) {
-            if (movie.getTitle().equalsIgnoreCase(title)) {
-                Scanner scanner = new Scanner(System.in);
+    public boolean editMovie(String title) {
+        Movie movieToEdit = searchMovie(title);
+        if (movieToEdit != null) {
+            boolean continueEdit = true;
 
-                System.out.println("Enter title.");
-                String newTitle = scanner.nextLine();
+            while (continueEdit) {
+                System.out.println("Select what you want to edit:");
+                System.out.println("1. Title");
+                System.out.println("2. Director");
+                System.out.println("3. Year created");
+                System.out.println("4. In color");
+                System.out.println("5. Length in minutes");
+                System.out.println("6. Genre");
+                System.out.println("7. Exit editing");
 
-                System.out.println("Director");
-                String newDirector = scanner.nextLine();
+                int editChoice = scanner.nextInt();
+                scanner.nextLine();
 
-                System.out.println("Year created");
-                int newYearCreated = Integer.parseInt(scanner.nextLine());
-
-                System.out.println("Is in color?");
-                boolean newIsInColor = Boolean.parseBoolean(scanner.nextLine());
-
-                System.out.println("Length in minutes");
-                int newLengthInMinutes = Integer.parseInt(scanner.nextLine());
-
-                System.out.println("Enter genre");
-                String newGenre = scanner.nextLine();
-
-                movie.setTitle(newTitle);
-                movie.setDirector(newDirector);
-                movie.setYearCreated(newYearCreated);
-                movie.setIsInColor(newIsInColor);
-                movie.setLengthInMinutes(newLengthInMinutes);
-                movie.setGenre(newGenre);
-
-                System.out.println("Your movie has been updated.");
-                movieFound = true;
-                break;
+                switch (editChoice) {
+                    case 1:
+                        System.out.println("Enter new title:");
+                        String newTitle = scanner.nextLine();
+                        movieToEdit.setTitle(newTitle);
+                        break;
+                    case 2:
+                        System.out.println("Enter new director:");
+                        String newDirector = scanner.nextLine();
+                        movieToEdit.setDirector(newDirector);
+                        break;
+                    case 3:
+                        System.out.println("Enter new year created:");
+                        int newYearCreated = scanner.nextInt();
+                        scanner.nextLine();
+                        movieToEdit.setYearCreated(newYearCreated);
+                        break;
+                    case 4:
+                        System.out.println("Is the movie in color? (true/false):");
+                        boolean newIsInColor = scanner.nextBoolean();
+                        scanner.nextLine();
+                        movieToEdit.setIsInColor(newIsInColor);
+                        break;
+                    case 5:
+                        System.out.println("Enter new length in minutes:");
+                        int newLengthInMinutes = scanner.nextInt();
+                        scanner.nextLine();
+                        movieToEdit.setLengthInMinutes(newLengthInMinutes);
+                        break;
+                    case 6:
+                        System.out.println("Enter new genre:");
+                        String newGenre = scanner.nextLine();
+                        movieToEdit.setGenre(newGenre);
+                        break;
+                    case 7:
+                        continueEdit = false;
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Please enter a number between 1 and 7.");
+                }
             }
-        }
-        if (!movieFound) {
+            return true;
+        } else {
             System.out.println("Movie not found!");
+            return false;
         }
     }
 }
