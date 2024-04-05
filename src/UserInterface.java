@@ -4,9 +4,6 @@ public class UserInterface {
     Controller controller = new Controller();
     Scanner scanner = new Scanner(System.in);
 
-    public UserInterface() {
-    }
-
     public void startMenu() {
         while (true) {
             controller.mainMenu();

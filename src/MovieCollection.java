@@ -18,12 +18,7 @@ public class MovieCollection {
         for (int i = 0; i < moviesArrayList.size(); i++) {
             Movie movie = moviesArrayList.get(i);
             System.out.println("#########################################################");
-            System.out.println("# Title: " + movie.getTitle());
-            System.out.println("# Director: " + movie.getDirector());
-            System.out.println("# Year created: " + movie.getYearCreated());
-            System.out.println("# In color : " + (movie.getIsInColor() ? "Yes" : "No"));
-            System.out.println("# Length in minutes : " + movie.getLengthInMinutes());
-            System.out.println("# Genre: " + movie.getGenre());
+            System.out.println(movie.toString());
             System.out.println("#########################################################");
         }
     }
