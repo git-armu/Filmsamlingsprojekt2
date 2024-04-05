@@ -28,6 +28,9 @@ public class UserInterface {
                     case 5:
                         controller.menu5();
                         break;
+                    case 6:
+                        controller.menu6();
+                        break;
                     default:
                         System.out.println("Invalid. Enter enter a number between 1 and 5.");
                 }

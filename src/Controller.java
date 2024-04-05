@@ -17,30 +17,35 @@ public class Controller {
         System.out.println("# Enter 3 to view movies.                   #");
         System.out.println("# Enter 4 to search movies.                 #");
         System.out.println("# Enter 5 to edit a movie.                  #");
+        System.out.println("# Enter 6 to delete a movie.                #");
         System.out.println("#############################################");
     }
 
     public void menu1() {
-        System.out.println("Title?");
-        String title = scanner.nextLine();
+        try {
+            System.out.println("Title?");
+            String title = scanner.nextLine();
 
-        System.out.println("Director?");
-        String director = scanner.nextLine();
+            System.out.println("Director?");
+            String director = scanner.nextLine();
 
-        System.out.println("Year created?");
-        int yearCreated = Integer.parseInt(scanner.nextLine());
+            System.out.println("Year created?");
+            int yearCreated = Integer.parseInt(scanner.nextLine());
 
-        System.out.println("In color? (true/false)");
-        boolean isInColor = Boolean.parseBoolean(scanner.nextLine());
+            System.out.println("In color? (true/false)");
+            boolean isInColor = Boolean.parseBoolean(scanner.nextLine());
 
-        System.out.println("Length in minutes?");
-        int lengthInMinutes = Integer.parseInt(scanner.nextLine());
+            System.out.println("Length in minutes?");
+            int lengthInMinutes = Integer.parseInt(scanner.nextLine());
 
-        System.out.println("Genre?");
-        String genre = scanner.nextLine();
+            System.out.println("Genre?");
+            String genre = scanner.nextLine();
 
-        movieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
-        System.out.println("Movie " + title + " added!");
+            movieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+            System.out.println("Movie " + title + " added!");
+        }  catch (NumberFormatException nfe) {
+            System.out.println("Invalid. Enter a number.");
+        }
     }
 
     public void menu2() {
@@ -65,5 +70,11 @@ public class Controller {
         String title = scanner.nextLine();
 
         movieCollection.editMovie(title);
+    }
+
+    public void menu6() {
+        System.out.println("What movie would you like to delete?");
+        String titleToDelete = scanner.nextLine();
+        movieCollection.deleteMovie(titleToDelete);
     }
 }

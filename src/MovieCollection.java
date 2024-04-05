@@ -109,5 +109,17 @@ public class MovieCollection {
         }
         return true;
     }
+
+    public void deleteMovie(String title) {
+        for (int i = 0; i < moviesArrayList.size(); i++) {
+            Movie movie = moviesArrayList.get(i);
+            if (movie.getTitle().equalsIgnoreCase(title)) {
+                moviesArrayList.remove(i);
+                System.out.println("Movie deleted successfully.");
+                return;
+            }
+        }
+        System.out.println("Movie not found!");
+    }
 }
 
