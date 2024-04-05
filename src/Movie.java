@@ -64,6 +64,11 @@ public class Movie {
     }
 
     public String toString() {
-        return title + "\n" + director + "\n" + yearCreated + "\n" + isInColor + "\n" + lengthInMinutes + "\n" + genre;
+        return "Title: " + title + "\n" +
+                "Director: " + director + "\n" +
+                "Year Created: " + yearCreated + "\n" +
+                "In Color: " + (isInColor ? "Yes" : "No") + "\n" +
+                "Length in Minutes: " + lengthInMinutes + "\n" +
+                "Genre: " + genre;
     }
 }
