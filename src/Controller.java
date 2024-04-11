@@ -63,7 +63,13 @@ public class Controller {
     }
 
     public void menu3() {
-        movieCollection.displayMovies();
+        System.out.println("What is the primary attribute you would like to sort by?");
+        String sortBy = scanner.nextLine();
+
+        System.out.println("What is the secondary attribute you would like to sort by?");
+        String sortByTwo = scanner.nextLine();
+
+        movieCollection.displayMovies(sortBy, sortByTwo);
     }
 
     public void menu4() {
@@ -74,7 +80,8 @@ public class Controller {
 
     public void menu5() {
         System.out.println("Here's a display of the movies currently in your collection:");
-        movieCollection.displayMovies();
+        movieCollection.displayMovies("title", "director");
+        scanner.nextLine();
 
         System.out.println("Which movie would you like to edit?");
         String title = scanner.nextLine();

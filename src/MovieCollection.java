@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
@@ -19,13 +18,64 @@ public class MovieCollection {
         moviesArrayList.add(movie);
     }
 
-    public void displayMovies() {
+    public void displayMovies(String sortBy, String sortByTwo) {
         if (moviesArrayList.isEmpty()) {
             System.out.println("No movies in collection.");
             return;
         }
 
-        Collections.sort(moviesArrayList, Comparator.comparing(Movie::getTitle));
+        Comparator<Movie> comparator = null;
+        Comparator<Movie> comparatorTwo = null;
+        switch (sortBy) {
+            case "title":
+                comparator = Comparator.comparing(Movie::getTitle);
+                break;
+            case "director":
+                comparator = Comparator.comparing(Movie::getDirector);
+                break;
+            case "year":
+                comparator = Comparator.comparing(Movie::getYearCreated);
+                break;
+            case "color":
+                comparator = Comparator.comparing(Movie::getIsInColor);
+                break;
+            case "length":
+                comparator = Comparator.comparing(Movie::getLengthInMinutes);
+                break;
+            case "genre":
+                comparator = Comparator.comparing(Movie::getGenre);
+                break;
+            default:
+                System.out.println("Invalid. Enter correct attribute.");
+                return;
+        }
+
+        switch (sortByTwo) {
+            case "title":
+                comparatorTwo = Comparator.comparing(Movie::getTitle);
+                break;
+            case "director":
+                comparatorTwo = Comparator.comparing(Movie::getDirector);
+                break;
+            case "year":
+                comparatorTwo = Comparator.comparing(Movie::getYearCreated);
+                break;
+            case "color":
+                comparatorTwo = Comparator.comparing(Movie::getIsInColor);
+                break;
+            case "length":
+                comparatorTwo = Comparator.comparing(Movie::getLengthInMinutes);
+                break;
+            case "genre":
+                comparatorTwo = Comparator.comparing(Movie::getGenre);
+                break;
+            default:
+                System.out.println("Invalid. Enter correct attribute.");
+                return;
+        }
+
+        Comparator<Movie> comparatorsTogether = comparator.thenComparing(comparatorTwo);
+        moviesArrayList.sort(comparatorsTogether);
 
         for (int i = 0; i < moviesArrayList.size(); i++) {
             Movie movie = moviesArrayList.get(i);
