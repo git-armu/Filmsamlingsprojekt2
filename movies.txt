@@ -1,12 +1,18 @@
-Simpsons
-OJ
-1999
-true
-28
-Comedy
 Intestellar
 Cristopher Nolan
 2013
 true
 201
 Action thriller
+Rex
+Smiley
+2010
+false
+20
+Documentary
+Simpsons
+OJ
+1999
+true
+28
+Comedy

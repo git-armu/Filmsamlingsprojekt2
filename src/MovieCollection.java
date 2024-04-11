@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class MovieCollection {
@@ -22,6 +24,8 @@ public class MovieCollection {
             System.out.println("No movies in collection.");
             return;
         }
+
+        Collections.sort(moviesArrayList, Comparator.comparing(Movie::getTitle));
 
         for (int i = 0; i < moviesArrayList.size(); i++) {
             Movie movie = moviesArrayList.get(i);
