@@ -13,11 +13,12 @@ public class Controller {
         System.out.println("#############################################");
         System.out.println("# Welcome to your collection                #");
         System.out.println("# Enter 1 to add a movie.                   #");
-        System.out.println("# Enter 2 to cancel.                        #");
+        System.out.println("# Enter 2 to exit.                          #");
         System.out.println("# Enter 3 to view movies.                   #");
         System.out.println("# Enter 4 to search movies.                 #");
         System.out.println("# Enter 5 to edit a movie.                  #");
         System.out.println("# Enter 6 to delete a movie.                #");
+        System.out.println("# Enter 7 to load file.                     #");
         System.out.println("#############################################");
     }
 
@@ -49,7 +50,10 @@ public class Controller {
     }
 
     public void menu2() {
-        System.out.println("Cancel.");
+        System.out.println("Exiting program now.");
+        System.out.println("Enter the filename to save the movie collection:");
+        String filename = scanner.nextLine();
+        movieCollection.saveMovieCollection(filename);
     }
 
     public void menu3() {
@@ -77,4 +81,10 @@ public class Controller {
         String titleToDelete = scanner.nextLine();
         movieCollection.deleteMovie(titleToDelete);
     }
+
+    public void menu7() {
+        movieCollection.loadMovieCollection();
+    }
+
+
 }

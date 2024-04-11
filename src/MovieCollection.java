@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,7 +30,6 @@ public class MovieCollection {
             System.out.println("#########################################################");
         }
     }
-
 
     public Movie searchMovie(String title) {
         for (Movie movie : moviesArrayList) {
@@ -121,5 +123,48 @@ public class MovieCollection {
         }
         System.out.println("Movie not found!");
     }
-}
 
+    public void saveMovieCollection(String filename) {
+        try {
+            PrintStream output = new PrintStream(new File(filename));
+            for (Movie movie : moviesArrayList) {
+                output.println(movie.getTitle());
+                output.println(movie.getDirector());
+                output.println(movie.getYearCreated());
+                output.println(movie.getIsInColor());
+                output.println(movie.getLengthInMinutes());
+                output.println(movie.getGenre());
+            }
+            System.out.println("Movie collection saved to " + filename);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        }
+    }
+
+    public void loadMovieCollection() {
+        System.out.println("Enter the name of the file to load the movie collection from:");
+        String filename = scanner.nextLine();
+
+        try {
+            File file = new File(filename);
+            Scanner fileScanner = new Scanner(file);
+
+            while (fileScanner.hasNextLine()) {
+                String title = fileScanner.nextLine();
+                String director = fileScanner.nextLine();
+                int yearCreated = Integer.parseInt(fileScanner.nextLine());
+                boolean isInColor = Boolean.parseBoolean(fileScanner.nextLine());
+                int lengthInMinutes = Integer.parseInt(fileScanner.nextLine());
+                String genre = fileScanner.nextLine();
+
+                addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+            }
+
+            System.out.println("Movie collection loaded from " + filename + ".");
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: The file '" + filename + "' was not found.");
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid number format in the file.");
+        }
+    }
+}

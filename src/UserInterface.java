@@ -31,11 +31,14 @@ public class UserInterface {
                     case 6:
                         controller.menu6();
                         break;
+                    case 7:
+                        controller.menu7();
+                        break;
                     default:
-                        System.out.println("Invalid. Enter enter a number between 1 and 5.");
+                        System.out.println("Invalid. Enter enter a number between 1 and 7.");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Invalid. Enter a number between 1 and 5.");
+                System.out.println("Invalid. Enter a number between 1 and 7.");
                 scanner.nextLine();
             }
         }
