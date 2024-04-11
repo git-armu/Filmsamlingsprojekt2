@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Controller {
-
     private MovieCollection movieCollection;
+    private boolean changesMade = false;
     Scanner scanner = new Scanner(System.in);
 
     public Controller() {
@@ -44,6 +44,7 @@ public class Controller {
 
             movieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
             System.out.println("Movie " + title + " added!");
+            changesMade = true;
         }  catch (NumberFormatException nfe) {
             System.out.println("Invalid. Enter a number.");
         }
@@ -51,9 +52,14 @@ public class Controller {
 
     public void menu2() {
         System.out.println("Exiting program now.");
-        System.out.println("Enter the filename to save the movie collection:");
-        String filename = scanner.nextLine();
-        movieCollection.saveMovieCollection(filename);
+        if (changesMade) {
+            System.out.println("Enter filename to save the movie collection to:");
+            String filename = scanner.nextLine();
+            movieCollection.saveMovieCollection(filename);
+            changesMade = false;
+        } else {
+            System.out.println("No changes made - Exited without saving.");
+        }
     }
 
     public void menu3() {
@@ -74,12 +80,14 @@ public class Controller {
         String title = scanner.nextLine();
 
         movieCollection.editMovie(title);
+        changesMade = true;
     }
 
     public void menu6() {
         System.out.println("What movie would you like to delete?");
         String titleToDelete = scanner.nextLine();
         movieCollection.deleteMovie(titleToDelete);
+        changesMade = true;
     }
 
     public void menu7() {

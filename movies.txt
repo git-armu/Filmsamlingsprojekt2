@@ -4,12 +4,6 @@ OJ
 true
 28
 Comedy
-Green
-Wood
-2000
-false
-35
-Thriller
 Intestellar
 Cristopher Nolan
 2013
